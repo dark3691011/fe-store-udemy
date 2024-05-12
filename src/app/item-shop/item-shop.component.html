@@ -1,0 +1,14 @@
+<div>
+  <img src="{{ image }}" alt="" />
+  <p>{{ name }}</p>
+  <p>{{ price }}$</p>
+  <input
+    type="number"
+    id="quantity"
+    name="quantity"
+    min="1"
+    def
+    [(ngModel)]="quantity"
+  />
+  <button type="button">Add to cart</button>
+</div>
