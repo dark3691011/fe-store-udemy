@@ -1,14 +1,17 @@
-<div>
-  <img src="{{ image }}" alt="" />
-  <p>{{ name }}</p>
-  <p>{{ price }}$</p>
+<div
+  class="w-75 p-2 d-flex flex-column justify-content-center align-items-center"
+>
+  <img class="img-fluid p-4 border" src="{{ image }}" alt="" />
+  <p class="mb-2">{{ name }}</p>
+  <p class="fw-bold mb-2">${{ price }}</p>
   <input
     type="number"
     id="quantity"
     name="quantity"
     min="1"
-    def
+    style="width: 60px"
+    class="mb-2"
     [(ngModel)]="quantity"
   />
-  <button type="button">Add to cart</button>
+  <button class="btn btn-primary" type="button">Add to cart</button>
 </div>

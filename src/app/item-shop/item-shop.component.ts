@@ -12,5 +12,6 @@ export class ItemShopComponent {
   @Input() name: string | undefined;
   @Input() price: number | undefined;
   @Input() image: string | undefined;
+  @Input() description: string | undefined;
   quantity: number | undefined = 1;
 }
