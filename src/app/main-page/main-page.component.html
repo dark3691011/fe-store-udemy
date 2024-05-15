@@ -3,12 +3,7 @@
     <div class="row">
       <ng-container *ngFor="let item of itemShops">
         <div class="col-4">
-          <app-item-shop
-            [name]="item.name"
-            [image]="item.url"
-            [price]="item.price"
-            [description]="item.description"
-          ></app-item-shop>
+          <app-item-shop [product]="item"></app-item-shop>
         </div>
       </ng-container>
     </div>

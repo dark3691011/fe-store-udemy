@@ -1,9 +1,11 @@
 <div
   class="w-75 p-2 d-flex flex-column justify-content-center align-items-center"
 >
-  <img class="img-fluid p-4 border" src="{{ image }}" alt="" />
-  <p class="mb-2">{{ name }}</p>
-  <p class="fw-bold mb-2">${{ price }}</p>
+  <a routerLink="/detail/1">
+    <img class="img-fluid p-4 border" src="{{ product.url }}" alt="" />
+    <p class="mb-2">{{ product.name }}</p>
+  </a>
+  <p class="fw-bold mb-2">${{ product.price }}</p>
   <input
     type="number"
     id="quantity"

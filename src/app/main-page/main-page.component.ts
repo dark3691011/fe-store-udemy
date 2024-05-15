@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import data from '../../assets/data.json';
 import { ItemShopComponent } from '../item-shop/item-shop.component';
 import { CommonModule } from '@angular/common';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-main-page',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
   imports: [ItemShopComponent, CommonModule],
 })
 export class MainPageComponent {
-  itemShops: any;
+  itemShops!: Product[];
   ngOnInit(): void {
     this.itemShops = data;
   }
