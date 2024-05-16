@@ -1,14 +1,14 @@
 <div>
   <div class="container text-center w-50">
     <div class="row">
-      <div class="col-4">
+      <div class="col-6">
         <img
           class="img-fluid rounded ms-3 me-3"
           src="{{ product?.url }}"
           alt=""
         />
       </div>
-      <div class="col-8">
+      <div class="col-6">
         <div class="d-flex flex-column align-items-start m-5">
           <h3>{{ product?.name }}</h3>
           <p class="">${{ product?.price }}</p>
@@ -25,7 +25,7 @@
           <button class="btn btn-primary wp-100" type="button">
             Add to cart
           </button>
-          <a routerLink="/">Back to product list</a>
+          <a class="mt-2" routerLink="/">Back to product list</a>
         </div>
       </div>
     </div>
