@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ProductsService } from './products.service';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  constructor(private readonly productService: ProductsService) {}
+  constructor(
+    private readonly dataService: DataService,
+    private readonly productService: ProductsService
+  ) {}
 
   keyLocalStorage = 'cart';
 
@@ -28,11 +32,17 @@ export class CartService {
 
     cart = checkExist ? cart : [...cart, { ...product, amount }];
     localStorage.setItem(this.keyLocalStorage, JSON.stringify(cart));
+
+    this.dataService.updateData(`Added ${amount} ${product.name} to cart!`);
     return true;
   }
 
   getCart() {
     return JSON.parse(localStorage.getItem(this.keyLocalStorage) || '[]');
+  }
+
+  clearCart() {
+    localStorage.setItem(this.keyLocalStorage, '[]');
   }
 
   getTotalCart() {
