@@ -3,7 +3,13 @@ import { Product } from '../../../models/product.model';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params, RouterModule } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
-import { map, switchMap } from 'rxjs';
+import {
+  Subscriber,
+  Subscription,
+  SubscriptionLike,
+  map,
+  switchMap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-item-details',
@@ -15,10 +21,11 @@ import { map, switchMap } from 'rxjs';
 export class ItemDetailsComponent {
   product?: Product;
   quantity?: number = 1;
+  subscribeProduct!: SubscriptionLike;
+  subscription!: Subscription;
 
   constructor(
     private readonly productsService: ProductsService,
-
     private route: ActivatedRoute
   ) {}
 
@@ -33,8 +40,12 @@ export class ItemDetailsComponent {
         );
       })
     );
-    pipeProduct.subscribe((data) => {
+    this.subscription = pipeProduct.subscribe((data) => {
       this.product = data;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

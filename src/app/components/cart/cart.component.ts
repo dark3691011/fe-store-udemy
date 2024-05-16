@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,31 +11,18 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cart.component.css',
 })
 export class CartComponent {
+  constructor(private readonly cartService: CartService) {}
+
   fullName?: string;
   address?: string;
   creditCard?: string;
-  total = 1000;
+  total = 0;
+  listCart: any = [];
 
-  listCart = [
-    {
-      id: 3,
-      name: 'Backpack',
-      price: 79.99,
-      url: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      description: 'Carry things around town!',
-      amount: 10,
-    },
-    {
-      id: 3,
-      name: 'Backpack',
-      price: 79.99,
-      url: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      description: 'Carry things around town!',
-      amount: 10,
-    },
-  ];
-
-  onSubmit() {
-    console.log('cac');
+  ngOnInit(): void {
+    this.listCart = this.cartService.getCart();
+    this.total = this.cartService.getTotalCart();
   }
+
+  onSubmit() {}
 }
