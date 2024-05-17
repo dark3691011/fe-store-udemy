@@ -22,7 +22,11 @@
             class="mb-2 wp-100"
             [(ngModel)]="quantity"
           />
-          <button class="btn btn-primary wp-100" type="button">
+          <button
+            (click)="addCart()"
+            class="btn btn-primary wp-100"
+            type="button"
+          >
             Add to cart
           </button>
           <a class="mt-2" routerLink="/">Back to product list</a>

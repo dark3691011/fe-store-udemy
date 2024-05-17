@@ -4,18 +4,25 @@
       <div class="col-6">
         <ng-container *ngFor="let product of listCart">
           <div class="d-flex mb-3 position-relative">
-            <button (click)="removeItem(product.id)" class="btn-delete text-danger">Delete</button>
+            <button
+              (click)="removeItem(product.id)"
+              class="btn-delete text-danger"
+            >
+              Delete
+            </button>
             <img src="{{ product.url }}" class="img-item-cart me-5" alt="" />
             <div class="d-flex flex-column align-items-start">
-              <a routerLink="/detail/{{product.id}}" class="fw-bold">{{ product.name }}</a>
+              <a routerLink="/detail/{{ product.id }}" class="fw-bold">{{
+                product.name
+              }}</a>
               <p class="">${{ product.price }}</p>
               <div class="d-flex">
                 <p class="me-2 mb-0">Amount:</p>
                 <input
                   class="input-amout"
                   [(ngModel)]="product.amount"
-                  type="text"
-                  (change)="changeAmount(product.id, product.amount)"
+                  type="number"
+                  (ngModelChange)="changeAmount(product.id, product.amount)"
                 />
               </div>
             </div>
@@ -88,6 +95,7 @@
               minlength="10"
               maxlength="10"
               placeholder="(16-digit number)"
+              pattern="[0-9]{10}"
               [(ngModel)]="creditCard"
               #formCreditCard="ngModel"
             />

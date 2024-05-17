@@ -10,6 +10,7 @@ import {
   map,
   switchMap,
 } from 'rxjs';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-item-details',
@@ -20,13 +21,14 @@ import {
 })
 export class ItemDetailsComponent {
   product?: Product;
-  quantity?: number = 1;
+  quantity: number = 1;
   subscribeProduct!: SubscriptionLike;
   subscription!: Subscription;
 
   constructor(
     private readonly productsService: ProductsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private readonly cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -47,5 +49,13 @@ export class ItemDetailsComponent {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  async addCart() {
+    if (this.product?.id)
+      await this.cartService.addCart({
+        id: this.product?.id,
+        amount: this.quantity,
+      });
   }
 }

@@ -3,7 +3,10 @@
     <div class="row">
       <ng-container *ngFor="let item of itemShops">
         <div class="col-4">
-          <app-item-shop [product]="item"></app-item-shop>
+          <app-item-shop
+            (addCartEvent)="addCart($event)"
+            [product]="item"
+          ></app-item-shop>
         </div>
       </ng-container>
     </div>

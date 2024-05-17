@@ -17,7 +17,7 @@ export class CartComponent {
 
   fullName?: string;
   address?: string;
-  creditCard?: string;
+  creditCard?: number;
   total = 0;
   listCart: any = [];
   isFinish = false;
@@ -37,6 +37,7 @@ export class CartComponent {
       id,
       amount,
     });
+    this.total = this.cartService.getTotalCart();
   }
 
   async removeItem(id: number) {
