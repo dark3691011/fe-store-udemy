@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../../../models/product.model';
+import { Product } from '../../models/product.model';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params, RouterModule } from '@angular/router';
 import { ProductsService } from '../../services/products.service';

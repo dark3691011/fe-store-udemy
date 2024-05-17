@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { AlertEnum, DataService } from '../../services/data.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,11 +11,12 @@ import { CommonModule } from '@angular/common';
 })
 export class AlertComponent {
   constructor(private readonly dataService: DataService) {}
-  alertMessage?: string;
+  alertInfo?: any;
+  alertEnum = AlertEnum;
 
   ngOnInit(): void {
     this.dataService.currentData.subscribe((e) => {
-      this.alertMessage = e;
+      this.alertInfo = e;
     });
   }
 }

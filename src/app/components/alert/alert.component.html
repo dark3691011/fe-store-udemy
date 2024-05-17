@@ -1,3 +1,6 @@
-<div *ngIf="alertMessage" class="alert alert-primary notification" role="alert">
-  {{ alertMessage }}
+<div *ngIf="alertInfo" class="alert notification" role="alert"
+
+[ngClass]="{'alert-success': alertInfo.type === alertEnum.SUCCESS, 'alert-danger' : alertInfo.type === alertEnum.DANGER}"
+>
+  {{ alertInfo.message }}
 </div>
